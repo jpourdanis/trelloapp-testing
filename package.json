@@ -5,7 +5,7 @@
   "license": "ISC",
   "scripts": {
     "start": "grunt dev && node index.js",
-    "cy:open": "npx cypres open"
+    "cy:open": "npx cypress open"
   },
   "browser": {
     "vue": "vue/dist/vue.common.js"
@@ -25,7 +25,7 @@
     "clipboardy": "^2.3.0",
     "connect-busboy": "0.0.2",
     "connect-history-api-fallback": "^1.6.0",
-    "cypress": "^6.2.1",
+    "cypress": "^10.10.0",
     "cypress-file-upload": "^4.1.1",
     "cypress-real-events": "^1.1.0",
     "eslint": "^7.4.0",
