@@ -16,6 +16,7 @@ export default defineConfig({
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.
     setupNodeEvents(on, config) {
+      config.env.EXTERNAL_API_URL = 'https://gorest.co.in/public/v2';
       return require('./cypress/plugins/index.ts')(on, config)
     },
     baseUrl: 'http://localhost:3000',
