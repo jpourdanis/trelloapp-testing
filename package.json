@@ -5,7 +5,8 @@
   "license": "ISC",
   "scripts": {
     "start": "grunt dev && node index.js",
-    "cy:open": "npx cypress open"
+    "cy:open": "npx cypress open",
+    "postman:external": "npx newman run postman/external/gorest.co.in.json"
   },
   "browser": {
     "vue": "vue/dist/vue.common.js"
@@ -42,6 +43,8 @@
     "json-server-auth": "^1.2.1",
     "lodash": "^4.17.20",
     "moment": "^2.27.0",
+    "newman": "^5.3.2",
+    "newman-reporter-htmlextra": "^1.22.11",
     "nocache": "^2.1.0",
     "require-uncached": "^2.0.0",
     "sass": "^1.26.8",
