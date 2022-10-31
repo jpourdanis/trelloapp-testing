@@ -1,13 +1,25 @@
-a simple trello clone application built on vue and json-server. The point of this app is to be super easy to install and run, so that you don’t need to set up complicated database and have several scripts running in order to open app. Just install, write npm start and you are good to go.
+# Cypress API Testings Demo
 
-The original version of this app was built by Zack Thoutt and [you can find it here](https://github.com/zackthoutt/vue-trello). I updated the app to vue 2 and am using json-server and axios instead of local storage to handle data. I also implemented a simple JWT authentication by utilizing json-server-auth. You can also upload images to tasks, files are saved to your drive. 
+### Installation for external API Testing
 
-I’m pretty happy with the result, although I have to say, that I am no Vue expert. I learn by copying the work of others, code from stackoverflow, documentation(s) and then try to use that knowledge and code to make something on my own. I bet you could find some antipatterns in the code and you are more than welcome to create an issue with a suggestion. I made this app for a workshop I’m am doing on testing in Cypress.io. If you are intereseted how that looks, check out my [quick course on Udemy](https://www.udemy.com/course/cypress-test-automation-for-people-in-a-hurry/?couponCode=D7F5FD6D19C9A5FF823D) (link with a discount coupon, cause you’re nice), although I’m using another app there. Maybe next time.
+1. Create an account to https://gorest.co.in/
+2. Create an API Token
+3. Create to root folder a [cypress.env.json](cypress.env.json) file that contains the token configuration :
 
-Oh and the installation
-`npm install`
-`npm start`
+```json
+{
+  "token": "<Your-API-Token-Here>"
+}
+```
 
-That should do it. If you update the code, use `npx grunt dev` to build the app again.
+4. Run `npm install`
+5. Run `npm run cy:open`
+6. Run [cypress/e2e/api/external/graphql.ts](cypress/e2e/api/external/graphql.ts) and [cypress/e2e/api/external/rest.ts](cypress/e2e/api/external/rest.ts)
 
-I’ll do a better readme file, I swear. I’m just a little busy now.
+### Instalation for local API Testing
+
+1. Run `npm install`
+2. Run `npm start`
+3. Open your browser to verify that the app running on http://localhost:3000
+4. Open a new terminal windows and run `npm run cy:open`
+5. Run [cypress/e2e/api/local/board.ts](cypress/e2e/api/local/board.ts)
