@@ -21,5 +21,5 @@
 1. Run `npm install`
 2. Run `npm start`
 3. Open your browser to verify that the app running on http://localhost:3000
-4. Open a new terminal windows and run `npm run cy:open`
+4. Open a new terminal window and run `npm run cy:open`
 5. Run [cypress/e2e/api/local/board.ts](cypress/e2e/api/local/board.ts)
