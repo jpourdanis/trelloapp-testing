@@ -4,7 +4,7 @@
 
 1. Create an account to https://gorest.co.in/
 2. Create an API Token
-3. Create to root folder a [cypress.env.json](cypress.env.json) file that contains the token configuration :
+3. Create to root folder a `cypress.env.json` file that contains the token configuration :
 
 ```json
 {
