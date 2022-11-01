@@ -16,6 +16,10 @@
 5. Run `npm run cy:open`
 6. Run [cypress/e2e/api/external/graphql.ts](cypress/e2e/api/external/graphql.ts) and [cypress/e2e/api/external/rest.ts](cypress/e2e/api/external/rest.ts)
 
+> Before we start, open this in a new tab and let the container load. Takes a few mins. Longer for slower internet.
+
+[![Try in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/jpourdanis/trelloapp-testing/tree/api-testing)
+
 ### Instalation for local API Testing
 
 1. Run `npm install`
