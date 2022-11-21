@@ -4,7 +4,7 @@
 
 1. Create an account to https://gorest.co.in/
 2. Create an API Token
-3. Create to root folder a [cypress.env.json](cypress.env.json) file that contains the token configuration :
+3. Create to root folder a `cypress.env.json` file that contains the token configuration :
 
 ```json
 {
@@ -18,8 +18,12 @@
 
 ### Instalation for local API Testing
 
+> Before we start, open this in a new tab and let the container load. Takes a few mins. Longer for slower internet.
+
+[![Try in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/jpourdanis/trelloapp-testing/tree/api-testing)
+
 1. Run `npm install`
 2. Run `npm start`
 3. Open your browser to verify that the app running on http://localhost:3000
-4. Open a new terminal windows and run `npm run cy:open`
+4. Open a new terminal window and run `npm run cy:open`
 5. Run [cypress/e2e/api/local/board.ts](cypress/e2e/api/local/board.ts)
