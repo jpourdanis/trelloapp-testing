@@ -6,8 +6,9 @@
   "scripts": {
     "start": "grunt dev && node index.js",
     "cy:open": "npx cypress open",
-    "cy:run": "npx cypress run --spec \"cypress/e2e/api/local/board.ts\" ",
-    "postman:external": "npx newman run postman/external/gorest.co.in.json",
+    "cy:run-local-api": "npx cypress run --spec \"cypress/e2e/api/local/board.ts\" ",
+    "cy:run-external-api": "CYPRESS_BASE_URL=https://gorest.co.in npx cypress run --spec \"cypress/e2e/api/external/*.ts\" --env token=<your-token-here>",
+    "postman:external": "npx newman run postman/external/gorest.co.in.json --env-var \"bearerToken=<your-token-here>\"",
     "postman:internal": "npx newman run postman/local/trello-app.json"
   },
   "browser": {
