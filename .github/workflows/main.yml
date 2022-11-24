@@ -24,13 +24,3 @@ jobs:
         env:
           CYPRESS_BASE_URL: https://gorest.co.in
           CYPRESS_token: ${{ secrets.TOKEN }}
-  postman-run-local-api:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Postman run local API Tests
-        run: |
-          npm run start &
-          sleep 60
-          npx newman run postman/local/trello-app.json"
