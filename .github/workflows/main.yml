@@ -32,4 +32,5 @@ jobs:
       - name: Postman run local API Tests
         uses: matt-ball/newman-action@master
         with:
+          start: npm start
           collection: postman/local/trello-app.json
