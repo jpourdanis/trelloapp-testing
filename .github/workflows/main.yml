@@ -1,21 +1,13 @@
-name: Build
+name: Cypress tests on local API
 on: [push]
 jobs:
   cypress-run:
-    runs-on: ubuntu-16.04
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3]
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           start: npm start
-          record: true
-          parallel: true
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          spec: cypress/e2e/api/local/board.ts
