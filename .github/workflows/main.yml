@@ -1,13 +1,26 @@
-name: Cypress tests on local API
+name: Cypress and Postman Tests
 on: [push]
 jobs:
-  cypress-run:
+  cypress-run-local-api:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Cypress run
+      - name: Cypress run local API Tests
         uses: cypress-io/github-action@v4
         with:
           start: npm start
           spec: cypress/e2e/api/local/board.ts
+  cypress-run-external-api:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run local API Tests
+        uses: cypress-io/github-action@v4
+        with:
+          start: npm start
+          spec: cypress/e2e/api/external/*.ts
+        env:
+          CYPRESS_BASE_URL: https://gorest.co.in
+          CYPRESS_token: ${{ secrets.TOKEN }}
