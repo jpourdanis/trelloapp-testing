@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Cypress run local API Tests
+      - name: Cypress run external API Tests
         uses: cypress-io/github-action@v4
         with:
           start: npm start
@@ -24,3 +24,12 @@ jobs:
         env:
           CYPRESS_BASE_URL: https://gorest.co.in
           CYPRESS_token: ${{ secrets.TOKEN }}
+  postman-run-local-api:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Postman run local API Tests
+        uses: matt-ball/newman-action@master
+        with:
+          collection: postman/local/trello-app.json
