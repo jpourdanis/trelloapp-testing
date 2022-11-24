@@ -1,4 +1,4 @@
-name: Cypress and Postman Tests
+name: Cypress API Tests
 on: [push]
 jobs:
   cypress-run-local-api:
