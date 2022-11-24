@@ -30,7 +30,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Postman run local API Tests
-        uses: matt-ball/newman-action@master
-        with:
-          start: npm start
-          collection: postman/local/trello-app.json
+        run: |
+          npm run start &
+          sleep 60
+          npx newman run postman/local/trello-app.json"
