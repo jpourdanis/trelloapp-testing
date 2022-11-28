@@ -5,6 +5,7 @@
   "license": "ISC",
   "scripts": {
     "start": "grunt dev && node index.js",
+    "cy": "cypress",
     "cy:open": "npx cypress open",
     "cy:run-local-api": "npx cypress run --spec \"cypress/e2e/api/local/board.ts\" ",
     "cy:run-external-api": "CYPRESS_BASE_URL=https://gorest.co.in npx cypress run --spec \"cypress/e2e/api/external/*.ts\" --env token=<your-token-here>",
