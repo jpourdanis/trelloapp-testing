@@ -1,6 +1,6 @@
 # Cypress API Testings Demo
 
-[![Cypress and Postman Tests](https://github.com/jpourdanis/trelloapp-testing/actions/workflows/main.yml/badge.svg?branch=api-testing&event=push)](https://github.com/jpourdanis/trelloapp-testing/actions/workflows/main.yml)
+[![Cypress API Tests](https://github.com/jpourdanis/trelloapp-testing/actions/workflows/main.yml/badge.svg?branch=api-testing&event=push)](https://github.com/jpourdanis/trelloapp-testing/actions/workflows/main.yml)
 
 ### Installation for external API Testing
 
