@@ -2,5 +2,5 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "development",
   "forwardPorts": [8080],
-  "postCreateCommand": "npm install && npm cy install"
+  "postCreateCommand": "npm install && npm install -g cypress --unsafe-perm --silent"
 }
