@@ -1,6 +1,8 @@
 ARG VARIANT=16-bullseye
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:${VARIANT}
 
+ENV CYPRESS_CACHE_FOLDER=/workspace/.cypress-cache
+
 # https://docs.cypress.io/guides/continuous-integration/introduction#Dependencies
 RUN apt-get update && \
     export DEBIAN_FRONTEND=noninteractive && \
