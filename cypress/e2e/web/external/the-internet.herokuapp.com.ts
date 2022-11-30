@@ -8,6 +8,7 @@ describe("Web testing with the-internet.herokuapp.com", () => {
     cy.get(".heading").should("have.text", "Welcome to the-internet");
   });
 
+  //add_remove_elements/ web page
   it("should add an element to page.", () => {
     cy.visit("http://the-internet.herokuapp.com/add_remove_elements/");
     cy.get("button").contains("Add Element").click();
@@ -24,6 +25,41 @@ describe("Web testing with the-internet.herokuapp.com", () => {
   });
 
   it("should add 3 elements and then remove 2.", () => {
+    /**
+     * your code here
+     */
+  });
+
+  //checkboxes web page
+  it("should check the first checkbox.", () => {
+    cy.visit("http://the-internet.herokuapp.com/checkboxes");
+    cy.get("input").first().check();
+    cy.get("input").eq(0).should("be.checked");
+
+    //cy.get("#checkboxes [type=checkbox]").first().uncheck();
+  });
+
+  //dropdowns web page
+  it("should select the first option.", () => {
+    cy.visit("http://the-internet.herokuapp.com/dropdown");
+    cy.get("#dropdown").select(1);
+
+    cy.get('#dropdown [selected="selected"]')
+      .should("have.value", "1")
+      .and("have.text", "Option 1");
+  });
+
+  Cypress.config("defaultCommandTimeout", 1000);
+  //dynamic controls web page
+  it("should wait the element to disappear.", () => {
+    cy.visit("http://the-internet.herokuapp.com/dynamic_controls");
+    cy.get('#checkbox-example [type="button"]').click();
+    cy.get("#checkbox").should("not.exist");
+  });
+
+  //login web page
+  it("should login and verify that you are in a secure area.", () => {
+    cy.visit("http://the-internet.herokuapp.com/login");
     /**
      * your code here
      */
