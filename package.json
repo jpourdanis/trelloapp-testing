@@ -9,6 +9,7 @@
     "cy:open": "npx cypress open",
     "cy:run-local-api": "npx cypress run --spec \"cypress/e2e/api/local/board.ts\" ",
     "cy:run-external-api": "CYPRESS_BASE_URL=https://gorest.co.in npx cypress run --spec \"cypress/e2e/api/external/*.ts\" --env token=<your-token-here>",
+    "cy:run-external-web": "CYPRESS_BASE_URL=http://the-internet.herokuapp.com npx cypress run --spec \"cypress/e2e/web/external/*.ts\"",
     "postman:external": "npx newman run postman/external/gorest.co.in.json --env-var \"bearerToken=<your-token-here>\"",
     "postman:internal": "npx newman run postman/local/trello-app.json"
   },

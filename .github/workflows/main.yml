@@ -1,4 +1,4 @@
-name: Cypress API Tests
+name: Cypress Web Tests
 on: [push]
 jobs:
   cypress-run-local-api:
@@ -11,16 +11,15 @@ jobs:
         with:
           start: npm start
           spec: cypress/e2e/api/local/board.ts
-  cypress-run-external-api:
+  cypress-run-external-web:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Cypress run external API Tests
+      - name: Cypress run external Web Tests
         uses: cypress-io/github-action@v4
         with:
-          start: npm start
-          spec: cypress/e2e/api/external/*.ts
+          record: true,
+          spec: cypress/e2e/web/external/*.ts
         env:
-          CYPRESS_BASE_URL: https://gorest.co.in
-          CYPRESS_token: ${{ secrets.TOKEN }}
+          CYPRESS_BASE_URL: http://the-internet.herokuapp.com
