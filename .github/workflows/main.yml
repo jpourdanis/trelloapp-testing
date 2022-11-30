@@ -23,3 +23,9 @@ jobs:
           spec: cypress/e2e/web/external/*.ts
         env:
           CYPRESS_BASE_URL: http://the-internet.herokuapp.com
+      - name: Upload recording videos 
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
