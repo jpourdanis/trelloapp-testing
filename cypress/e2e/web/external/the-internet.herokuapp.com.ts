@@ -64,4 +64,15 @@ describe("Web testing with the-internet.herokuapp.com", () => {
      * your code here
      */
   });
+
+  it("should wait and verify that response status is 200", () => {
+    cy.visit("http://the-internet.herokuapp.com/status_codes");
+    cy.intercept("**status_codes**").as("response_status");
+    cy.get('a[href="status_codes/200"]').click();
+    cy.wait("@response_status");
+    cy.get("#content p").should("contain", "200 status code");
+    /**
+     * your code here
+     */
+  });
 });
