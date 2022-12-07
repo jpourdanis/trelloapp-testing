@@ -65,12 +65,35 @@ describe("Web testing with the-internet.herokuapp.com", () => {
      */
   });
 
+  //status code page
   it("should wait and verify that response status is 200", () => {
     cy.visit("http://the-internet.herokuapp.com/status_codes");
-    cy.intercept("**status_codes**").as("response_status");
+    cy.intercept("http://the-internet.herokuapp.com/status_codes/200").as(
+      "status_code_api"
+    );
     cy.get('a[href="status_codes/200"]').click();
-    cy.wait("@response_status");
-    cy.get("#content p").should("contain", "200 status code");
+    cy.wait("@status_code_api").its("response.statusCode").should("eq", 200);
+  });
+
+  //table page
+  it("should wait and verify that response status is 404", () => {
+    cy.visit("http://the-internet.herokuapp.com/status_codes");
+    /**
+     * your code here
+     */
+  });
+
+  it("should sort by due on the example 1 table", () => {
+    cy.visit("http://the-internet.herokuapp.com/tables");
+    cy.get("#table1 span").contains("Due").click();
+    cy.get("#table1 tr").eq(1).should("contain", "$50.00");
+    cy.get("#table1 tr").eq(2).should("contain", "$50.00");
+    cy.get("#table1 tr").eq(3).should("contain", "$51.00");
+    cy.get("#table1 tr").eq(4).should("contain", "$100.00");
+  });
+
+  it("should sort by first name on the example 2 table", () => {
+    cy.visit("http://the-internet.herokuapp.com/tables");
     /**
      * your code here
      */
