@@ -7,7 +7,7 @@ export default defineConfig({
   projectId: "7vknyb",
   retries: {
     openMode: 0,
-    runMode: 10,
+    runMode: 2,
   },
   video: true,
   viewportHeight: 550,
