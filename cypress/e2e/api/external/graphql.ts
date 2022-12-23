@@ -18,7 +18,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       }
     }`;
 
-    const variables = `{
+    const createUserVars = `{
       "name" : "John Pourdanis",
       "gender" : "male",
       "email" : "${randomUserEmail}",
@@ -31,7 +31,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       headers: {
         Authorization: `Bearer ${Cypress.env("token")}`,
       },
-      body: { query: createUserMutation, variables: variables },
+      body: { query: createUserMutation, variables: createUserVars },
     }).then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body.data.createUser.user).to.have.property(
@@ -69,7 +69,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
   });
 
   it("should get user details by id", () => {
-    const userDetailsQuery = `query ($id: ID!) {
+    const getUserDetailsQuery = `query ($id: ID!) {
       user(id: $id) {
         id
         name
@@ -79,7 +79,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       }
     }`;
 
-    const variables = `{ "id" : ${newUserId} }`;
+    const getUserDetailsVars = `{ "id" : ${newUserId} }`;
 
     cy.request({
       method: "POST",
@@ -87,7 +87,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       headers: {
         Authorization: `Bearer ${Cypress.env("token")}`,
       },
-      body: { query: userDetailsQuery, variables: variables },
+      body: { query: getUserDetailsQuery, variables: getUserDetailsVars },
     }).then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body.data.user).to.have.property(
@@ -112,7 +112,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       }
     }`;
 
-    const variables = `{
+    const updateUserVars = `{
       "id" : ${newUserId},
       "name" : "${updatedName}"
     }`;
@@ -123,7 +123,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       headers: {
         Authorization: `Bearer ${Cypress.env("token")}`,
       },
-      body: { query: updateUserMutation, variables: variables },
+      body: { query: updateUserMutation, variables: updateUserVars },
     }).then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body.data.updateUser.user).to.have.property(
@@ -148,7 +148,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       }
     }`;
 
-    const variables = `{
+    const deleteUserVars = `{
       "id" : ${newUserId}
     }`;
 
@@ -158,7 +158,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       headers: {
         Authorization: `Bearer ${Cypress.env("token")}`,
       },
-      body: { query: deleteUserMutation, variables: variables },
+      body: { query: deleteUserMutation, variables: deleteUserVars },
     }).then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body.data.deleteUser.user).to.have.property(
