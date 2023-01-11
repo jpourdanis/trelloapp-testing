@@ -27,6 +27,7 @@ jobs:
       - name: Cypress run local Web Tests
         uses: cypress-io/github-action@v4
         with:
+          start: npm start
           record: true,
           spec: cypress/e2e/web/local/*.cy.ts
       - name: Upload recording videos
