@@ -24,11 +24,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Cypress run external Web Tests
+      - name: Cypress run local Web Tests
         uses: cypress-io/github-action@v4
         with:
           record: true,
-          spec: cypress/e2e/web/local/*.ts
+          spec: cypress/e2e/web/local/*.cy.ts
       - name: Upload recording videos
         uses: actions/upload-artifact@v2
         if: always()
