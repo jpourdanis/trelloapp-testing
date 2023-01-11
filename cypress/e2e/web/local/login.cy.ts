@@ -1,7 +1,7 @@
 describe("Login form testing", () => {
-  let randomUserEmail =
+  const randomUserEmail =
     (Math.random() + 1).toString(36).substring(7) + "@mail.com";
-  let randomPassword = (Math.random() + 1).toString(36).substring(7);
+  const randomPassword = (Math.random() + 1).toString(36).substring(7);
 
   before(() => {
     cy.log("should create a user.");
