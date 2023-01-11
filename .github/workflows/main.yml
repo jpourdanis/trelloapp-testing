@@ -1,16 +1,6 @@
 name: Cypress Web Tests
 on: [push]
 jobs:
-  cypress-run-local-api:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Cypress run local API Tests
-        uses: cypress-io/github-action@v4
-        with:
-          start: npm start
-          spec: cypress/e2e/api/local/board.ts
   cypress-run-external-web:
     runs-on: ubuntu-20.04
     steps:
@@ -23,7 +13,23 @@ jobs:
           spec: cypress/e2e/web/external/*.ts
         env:
           CYPRESS_BASE_URL: http://the-internet.herokuapp.com
-      - name: Upload recording videos 
+      - name: Upload recording videos
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+  cypress-run-local-web:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run external Web Tests
+        uses: cypress-io/github-action@v4
+        with:
+          record: true,
+          spec: cypress/e2e/web/local/*.ts
+      - name: Upload recording videos
         uses: actions/upload-artifact@v2
         if: always()
         with:
