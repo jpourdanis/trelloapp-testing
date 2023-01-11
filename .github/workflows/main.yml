@@ -19,7 +19,6 @@ jobs:
       - name: Cypress run external API Tests
         uses: cypress-io/github-action@v4
         with:
-          start: npm start
           spec: cypress/e2e/api/external/*.ts
         env:
           CYPRESS_BASE_URL: https://gorest.co.in
