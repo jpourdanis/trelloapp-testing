@@ -12,7 +12,10 @@
     "cy:run-external-web": "CYPRESS_BASE_URL=http://the-internet.herokuapp.com npx cypress run --spec \"cypress/e2e/web/external/*.ts\"",
     "cy:run-local-web": "npx cypress run --spec \"cypress/e2e/web/local/*.ts\"",
     "postman:external": "npx newman run postman/external/gorest.co.in.json --env-var \"bearerToken=<your-token-here>\"",
-    "postman:internal": "npx newman run postman/local/trello-app.json"
+    "postman:internal": "npx newman run postman/local/trello-app.json",
+    "playwright:run-tests": "npx playwright test",
+    "playwright:show-report": "npx playwright show-report",
+    "playwright:all": "npm run playwright:run-tests && npm run playwright:show-report"
   },
   "browser": {
     "vue": "vue/dist/vue.common.js"
@@ -22,6 +25,7 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
     "@cypress/code-coverage": "^3.8.7",
+    "@playwright/test": "^1.30.0",
     "@types/node": "^14.14.11",
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
@@ -52,6 +56,7 @@
     "newman": "^5.3.2",
     "newman-reporter-htmlextra": "^1.22.11",
     "nocache": "^2.1.0",
+    "playwright": "^1.30.0",
     "require-uncached": "^2.0.0",
     "sass": "^1.26.8",
     "sendmail": "^1.6.1",

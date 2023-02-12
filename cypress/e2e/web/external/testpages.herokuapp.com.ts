@@ -1,5 +1,5 @@
 describe("Web testing with testpages.herokuapp.com", () => {
-  it("should fill the form , sumbit it and valide the error message", () => {
+  it("should fill the form , sumbit it and validate the error message.", () => {
     cy.visit(
       "https://testpages.herokuapp.com/styled/validation/input-validation.html"
     );
