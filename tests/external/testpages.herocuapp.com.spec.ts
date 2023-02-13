@@ -21,4 +21,23 @@ test.describe("Web testing with testpages.herokuapp.com", () => {
     // Expect a title "to contain" a substring.
     await expect(page).toHaveTitle(/Input Validation/);
   });
+
+  test("should calculate and verify the results.", async ({ page }) => {
+    await page.goto("https://testpages.herokuapp.com/styled/calculator");
+    /**
+     * 3 + 5
+     * 15 x 8
+     * 132 - 256
+     * 3 / 0
+     */
+  });
+
+  test("should wait the timer to finish.", async ({ page }) => {
+    await page.goto(
+      "https://testpages.herokuapp.com/styled/javascript-countdown-test.html"
+    );
+    /**
+     * type 10 seconds and wait the "Time up" label appear.
+     */
+  });
 });
