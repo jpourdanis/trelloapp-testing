@@ -18,7 +18,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       }
     }`;
 
-    const variables = `{
+    const createUserVariables = `{
       "name" : "John Pourdanis",
       "gender" : "male",
       "email" : "${randomUserEmail}",
@@ -31,7 +31,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       headers: {
         Authorization: `Bearer ${Cypress.env("token")}`,
       },
-      body: { query: createUserMutation, variables: variables },
+      body: { query: createUserMutation, variables: createUserVariables },
     }).then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body.data.createUser.user).to.have.property(
@@ -43,7 +43,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
   });
 
   it("should get all users", () => {
-    const query = `{
+    const getAllUsersQuery = `{
       users {
         nodes {
           id
@@ -61,7 +61,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       headers: {
         Authorization: `Bearer ${Cypress.env("token")}`,
       },
-      body: { query },
+      body: { query: getAllUsersQuery },
     }).then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body.data.users.nodes).to.have.length.greaterThan(0);
@@ -69,7 +69,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
   });
 
   it("should get user details by id", () => {
-    const userDetailsQuery = `query ($id: ID!) {
+    const getUserDetailsQuery = `query ($id: ID!) {
       user(id: $id) {
         id
         name
@@ -79,7 +79,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       }
     }`;
 
-    const variables = `{ "id" : ${newUserId} }`;
+    const getUserDetailsVariables = `{ "id" : ${newUserId} }`;
 
     cy.request({
       method: "POST",
@@ -87,7 +87,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       headers: {
         Authorization: `Bearer ${Cypress.env("token")}`,
       },
-      body: { query: userDetailsQuery, variables: variables },
+      body: { query: getUserDetailsQuery, variables: getUserDetailsVariables },
     }).then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body.data.user).to.have.property(
@@ -98,7 +98,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
   });
 
   it("should update name of user", () => {
-    const updatedName = "John Pourdanopoulos";
+    const nameToUpdate = "John Pourdanopoulos";
 
     const updateUserMutation = `mutation ($id: Int!, $name: String!) {
       updateUser(input: { id: $id, name: $name }) {
@@ -112,9 +112,9 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       }
     }`;
 
-    const variables = `{
+    const updateUserVariables = `{
       "id" : ${newUserId},
-      "name" : "${updatedName}"
+      "name" : "${nameToUpdate}"
     }`;
 
     cy.request({
@@ -123,12 +123,12 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       headers: {
         Authorization: `Bearer ${Cypress.env("token")}`,
       },
-      body: { query: updateUserMutation, variables: variables },
+      body: { query: updateUserMutation, variables: updateUserVariables },
     }).then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body.data.updateUser.user).to.have.property(
         "name",
-        updatedName
+        nameToUpdate
       );
     });
   });
@@ -148,7 +148,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       }
     }`;
 
-    const variables = `{
+    const deleteUserVariables = `{
       "id" : ${newUserId}
     }`;
 
@@ -158,7 +158,7 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
       headers: {
         Authorization: `Bearer ${Cypress.env("token")}`,
       },
-      body: { query: deleteUserMutation, variables: variables },
+      body: { query: deleteUserMutation, variables: deleteUserVariables },
     }).then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body.data.deleteUser.user).to.have.property(
