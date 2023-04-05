@@ -4,7 +4,8 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
 
   before(() => {
     cy.log("should create a user");
-    const createUserMutation = `mutation ($name: String!, $gender: String!, $email: String!, $status: String!) {
+    const createUserMutation = `
+    mutation ($name: String!, $gender: String!, $email: String!, $status: String!) {
       createUser(
         input: { name: $name, gender: $gender, email: $email, status: $status }
       ) {
@@ -16,7 +17,8 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
           status
         }
       }
-    }`;
+    }
+    `;
 
     const createUserVariables = `{
       "name" : "John Pourdanis",
@@ -43,7 +45,8 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
   });
 
   it("should get all users", () => {
-    const getAllUsersQuery = `{
+    const getAllUsersQuery = `
+    {
       users {
         nodes {
           id
@@ -53,7 +56,8 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
           status
         }
       }
-    }`;
+    }
+    `;
 
     cy.request({
       method: "POST",
@@ -69,7 +73,8 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
   });
 
   it("should get user details by id", () => {
-    const getUserDetailsQuery = `query ($id: ID!) {
+    const getUserDetailsQuery = `
+    query ($id: ID!) {
       user(id: $id) {
         id
         name
@@ -77,7 +82,8 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
         gender
         status
       }
-    }`;
+    }
+    `;
 
     const getUserDetailsVariables = `{ "id" : ${newUserId} }`;
 
@@ -100,7 +106,8 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
   it("should update name of user", () => {
     const nameToUpdate = "John Pourdanopoulos";
 
-    const updateUserMutation = `mutation ($id: Int!, $name: String!) {
+    const updateUserMutation = `
+    mutation ($id: Int!, $name: String!) {
       updateUser(input: { id: $id, name: $name }) {
         user {
           id
@@ -110,7 +117,8 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
           status
         }
       }
-    }`;
+    }
+    `;
 
     const updateUserVariables = `{
       "id" : ${newUserId},
@@ -136,7 +144,8 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
   after(() => {
     cy.log("should delete the user");
 
-    const deleteUserMutation = `mutation ($id: Int!) {
+    const deleteUserMutation = `
+    mutation ($id: Int!) {
       deleteUser(input: { id: $id }) {
         user {
           id
@@ -146,7 +155,8 @@ describe("Api calls to gorest.co.in with GraphQL", () => {
           status
         }
       }
-    }`;
+    }
+    `;
 
     const deleteUserVariables = `{
       "id" : ${newUserId}
